@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>The Shepherd's Staff — Study Companion</title>
+<meta name="description" content="A study companion for The Shepherd's Staff — notes, progress tracking, and topic concordance.">
+<meta name="theme-color" content="#1f3a5f" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12151b" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Shepherd's Staff">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="Shepherd's Staff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Serif+Telugu:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --font-display:'Fraunces','Noto Serif Telugu',Georgia,serif;
+  --font-body:'Plus Jakarta Sans','Noto Sans Telugu',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,monospace;
+  --bg:#f6f2ea; --bg2:#efe8da;
+  --surface:#fffdf8; --surface2:#f3ecdf;
+  --border:rgba(31,42,58,0.12); --border-strong:rgba(31,42,58,0.24);
+  --text:#1f242c; --text-dim:#6c6e78;
+  --navy:#1f3a5f; --navy-dim:rgba(31,58,95,0.08);
+  --gold:#a9781f; --gold-dim:rgba(169,120,31,0.13);
+  --sage:#5c7a56; --sage-dim:rgba(92,122,86,0.13);
+  --shadow:0 2px 10px rgba(31,42,58,0.06);
+  --shadow-lg:0 10px 34px rgba(31,42,58,0.10);
+}
+[data-theme="dark"]{
+  --bg:#12151b; --bg2:#0e1116;
+  --surface:#191d25; --surface2:#20252f;
+  --border:rgba(255,255,255,0.09); --border-strong:rgba(255,255,255,0.2);
+  --text:#e9e7e2; --text-dim:#9aa1ad;
+  --navy:#8fb4dd; --navy-dim:rgba(143,180,221,0.13);
+  --gold:#dcb063; --gold-dim:rgba(220,176,99,0.15);
+  --sage:#93b58c; --sage-dim:rgba(147,181,140,0.15);
+  --shadow:0 2px 12px rgba(0,0,0,0.35);
+  --shadow-lg:0 12px 40px rgba(0,0,0,0.5);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-tap-highlight-color:transparent}
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font-family:var(--font-body); font-size:16px; line-height:1.65;
+  overflow-wrap:break-word;
+  padding-top:env(safe-area-inset-top);
+  padding-left:env(safe-area-inset-left);
+  padding-right:env(safe-area-inset-right);
+  background-image:
+    radial-gradient(ellipse 70% 40% at 50% -8%, var(--gold-dim) 0%, transparent 60%),
+    radial-gradient(circle, var(--border) 1px, transparent 1px);
+  background-size:auto, 26px 26px;
+  background-attachment:fixed, fixed;
+}
+.wrap{max-width:1260px;margin:0 auto;padding:0 26px}
+
+/* ---------- HERO ---------- */
+.hero{display:flex;align-items:center;gap:24px;padding:52px 0 30px;border-bottom:1px solid var(--border)}
+.staff{width:52px;height:132px;color:var(--gold);flex-shrink:0;filter:drop-shadow(0 2px 6px rgba(169,120,31,0.18))}
+.hero__kicker{font-family:var(--font-mono);font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin:0 0 8px}
+.hero h1{font-family:var(--font-display);font-weight:600;font-size:clamp(34px,5vw,54px);line-height:1.12;margin:0 0 8px;letter-spacing:-0.5px}
+.hero__attrib{color:var(--text-dim);font-size:14px;margin:0}
+.hero__tagline{margin:12px 0 0;font-size:15px;color:var(--sage);font-weight:600;letter-spacing:0.2px}
+
+/* ---------- TOOLBAR ---------- */
+.toolbar{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:14px 0;margin-bottom:34px}
+.toolbar__in{display:flex;align-items:center;gap:18px}
+.search{position:relative;flex:1;min-width:0;max-width:520px}
+.search svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:17px;height:17px;stroke:var(--text-dim);fill:none;stroke-width:2;pointer-events:none}
+.search input{width:100%;font-family:var(--font-body);font-size:15px;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:11px 14px 11px 40px;outline:none;transition:border-color .18s, box-shadow .18s}
+.search input:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-dim)}
+.toolbar__right{margin-left:auto;display:flex;align-items:center;gap:16px}
+.meter{display:flex;align-items:center;gap:11px}
+.ring{width:42px;height:42px;transform:rotate(-90deg);flex-shrink:0}
+.ring circle{fill:none;stroke-width:3.4}
+.ring__bg{stroke:var(--border-strong)}
+.ring__fg{stroke:var(--gold);stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:100;transition:stroke-dashoffset .55s cubic-bezier(.4,0,.2,1)}
+.meter__txt{line-height:1.25}
+.meter__num{font-family:var(--font-mono);font-size:15px;font-weight:500;font-variant-numeric:tabular-nums}
+.meter__lbl{font-size:11px;color:var(--text-dim);letter-spacing:0.3px}
+.iconbtn{display:inline-flex;align-items:center;justify-content:center;gap:7px;background:var(--surface);border:1px solid var(--border);color:var(--text-dim);font-family:var(--font-mono);font-size:12px;padding:9px 13px;border-radius:9px;cursor:pointer;transition:all .16s;white-space:nowrap}
+.iconbtn:hover{color:var(--text);border-color:var(--border-strong);background:var(--surface2)}
+.iconbtn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2}
+.iconbtn[hidden]{display:none !important}
+.iconbtn--primary{background:var(--gold);color:#fff;border-color:var(--gold)}
+.iconbtn--primary:hover{background:var(--gold);color:#fff;opacity:.9}
+
+/* ---------- LAYOUT ---------- */
+.layout{display:grid;grid-template-columns:268px 1fr;gap:44px;align-items:start}
+.sidebar{position:sticky;top:96px;max-height:calc(100dvh - 120px);overflow-y:auto;padding-bottom:20px}
+.sidebar::-webkit-scrollbar{width:4px}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:3px}
+.side-title{font-family:var(--font-mono);font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--text-dim);padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid var(--border)}
+.side-link{display:block;text-decoration:none;color:var(--text);padding:12px 13px;border-radius:11px;border:1px solid transparent;margin-bottom:8px;transition:all .16s}
+.side-link:hover{background:var(--surface);border-color:var(--border)}
+.side-link.active{background:var(--surface);border-color:var(--border-strong);box-shadow:var(--shadow)}
+.side-link__top{display:flex;align-items:baseline;gap:9px;margin-bottom:8px}
+.side-link__roman{font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--gold);flex-shrink:0}
+.side-link__name{font-size:13.5px;font-weight:600;line-height:1.35}
+.side-link__bar{height:4px;border-radius:3px;background:var(--border);overflow:hidden}
+.side-link__fill{height:100%;width:0;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--sage));transition:width .5s}
+.side-link__meta{font-family:var(--font-mono);font-size:10.5px;color:var(--text-dim);margin-top:6px;font-variant-numeric:tabular-nums}
+
+/* ---------- SECTIONS ---------- */
+.part{margin-bottom:56px;scroll-margin-top:96px}
+.part.hide{display:none}
+.part__head{display:flex;align-items:flex-start;gap:18px;padding-bottom:18px;margin-bottom:24px;border-bottom:2px solid var(--border-strong);cursor:pointer}
+.part__head:hover .part__title{color:var(--gold)}
+.part__roman{font-family:var(--font-display);font-size:46px;font-weight:600;line-height:1;color:var(--gold);flex-shrink:0}
+.part__title{font-family:var(--font-display);font-size:clamp(24px,3vw,32px);font-weight:600;margin:0;line-height:1.2}
+.part__sub{color:var(--text-dim);font-size:14px;margin:5px 0 0}
+.part__note{display:inline-block;margin-top:10px;font-size:12.5px;color:var(--navy);background:var(--navy-dim);padding:4px 11px;border-radius:20px}
+.part__chev{margin-left:auto;flex-shrink:0;width:38px;height:38px;display:flex;align-items:center;justify-content:center;background:transparent;border:1px solid var(--border);border-radius:10px;color:var(--text-dim);cursor:pointer;transition:all .16s;padding:0}
+.part__chev:hover{color:var(--text);border-color:var(--border-strong);background:var(--surface)}
+.part__chev svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2.2;transition:transform .22s}
+.part.collapsed .part__chev svg{transform:rotate(-90deg)}
+.part.collapsed .part__body{display:none}
+.toolbar__right{flex-wrap:wrap;justify-content:flex-end}
+
+/* ---------- CARD ---------- */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;margin-bottom:12px;transition:box-shadow .18s, border-color .18s, transform .18s;overflow:hidden;animation:fadeUp .45s ease-out both;animation-delay:calc(var(--i,0)*0.022s)}
+.card:hover{box-shadow:var(--shadow);border-color:var(--border-strong)}
+.card.hide{display:none}
+.card.done{border-color:color-mix(in srgb,var(--sage) 45%,var(--border))}
+.card__head{display:flex;align-items:center;gap:15px;padding:15px 18px;cursor:pointer;user-select:none}
+.check{flex-shrink:0;width:26px;height:26px;border-radius:8px;border:2px solid var(--border-strong);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .16s;padding:0}
+.check:hover{border-color:var(--sage)}
+.check svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:0;transform:scale(.5);transition:all .18s}
+.card.done .check{background:var(--sage);border-color:var(--sage)}
+.card.done .check svg{opacity:1;transform:scale(1)}
+.badge{flex-shrink:0;min-width:40px;text-align:center;font-family:var(--font-mono);font-size:12px;font-weight:500;color:var(--navy);background:var(--navy-dim);padding:4px 9px;border-radius:8px}
+.card__title{flex:1;min-width:0;margin:0;font-size:15.5px;font-weight:600;line-height:1.4}
+.card.done .card__title{color:var(--text-dim)}
+.card__title mark{background:var(--gold-dim);color:inherit;border-radius:3px;padding:0 2px}
+.count{flex-shrink:0;font-family:var(--font-mono);font-size:11px;color:var(--text-dim);background:var(--surface2);border:1px solid var(--border);padding:3px 9px;border-radius:20px}
+.chev{flex-shrink:0;width:26px;height:26px;display:flex;align-items:center;justify-content:center;color:var(--text-dim);transition:transform .2s}
+.chev svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2.2}
+.card.open .chev{transform:rotate(180deg)}
+.card__subs{display:none;padding:2px 18px 18px 60px;border-top:1px solid var(--border)}
+.card.open .card__subs{display:block;animation:fadeUp .28s ease-out}
+.card__subs ol{list-style:none;margin:12px 0 0;padding:0;counter-reset:s}
+.sub{counter-increment:s;margin-bottom:4px;border-radius:9px}
+.sub__row{display:flex;align-items:flex-start;gap:9px;padding:5px 6px 5px 0}
+.sub__mark{flex-shrink:0;min-width:18px;font-family:var(--font-mono);font-size:11.5px;font-weight:500;color:var(--gold);padding-top:3px}
+.sub__mark::before{content:counter(s,upper-alpha) "."}
+.sub__txt{flex:1;min-width:0;font-size:14px;line-height:1.55;color:var(--text-dim)}
+.sub.hit .sub__txt{color:var(--text);font-weight:600}
+.sub__txt mark{background:var(--gold-dim);color:inherit;border-radius:3px;padding:0 2px}
+.sub-note-btn{flex-shrink:0;width:26px;height:26px;border:none;background:transparent;color:var(--text-dim);border-radius:7px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s;opacity:.4;padding:0}
+.sub:hover .sub-note-btn,.sub.note-open .sub-note-btn{opacity:.9}
+.sub-note-btn:hover{background:var(--gold-dim);color:var(--gold);opacity:1}
+.sub-note-btn svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.sub.has-note .sub-note-btn{opacity:1;color:var(--gold);background:var(--gold-dim)}
+.sub__note{display:none;padding:2px 6px 12px 27px}
+.sub.note-open .sub__note{display:block;animation:fadeUp .2s ease-out}
+.tailnote{margin:16px 0 0;font-size:13px;font-style:italic;color:var(--text-dim);padding-left:14px;border-left:2px solid var(--border-strong)}
+
+.note-btn{flex-shrink:0;width:30px;height:30px;display:flex;align-items:center;justify-content:center;border:none;background:transparent;color:var(--text-dim);cursor:pointer;border-radius:8px;transition:all .16s;padding:0}
+.note-btn:hover{background:var(--gold-dim);color:var(--gold)}
+.note-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.card.has-note .note-btn{color:var(--gold);background:var(--gold-dim)}
+.card__note{display:none;padding:0 18px 16px 60px}
+.card.note-open .card__note{display:block;animation:fadeUp .25s ease-out}
+
+/* ---------- RICH-TEXT NOTE EDITOR (view / edit modes) ---------- */
+.editor{position:relative;border:1px solid var(--border);border-radius:10px;background:var(--surface2);overflow:hidden;transition:border-color .16s,box-shadow .16s,background .16s}
+.editor[data-mode="edit"]{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-dim);background:var(--surface)}
+.editor__view{position:relative}
+.editor__preview{
+  min-height:42px;max-height:44vh;overflow-y:auto;
+  padding:12px 14px;
+  font-family:var(--font-body);font-size:14.5px;line-height:1.6;
+  color:var(--text);overflow-wrap:break-word;
+}
+.editor__preview:empty::before{content:attr(data-ph);color:var(--text-dim);opacity:.7;pointer-events:none}
+.editor__edit-btn{
+  position:absolute;top:7px;right:7px;
+  display:inline-flex;align-items:center;gap:5px;
+  font-family:var(--font-mono);font-size:10.5px;font-weight:500;
+  background:var(--surface);border:1px solid var(--border);
+  color:var(--text-dim);border-radius:7px;padding:4px 9px;
+  cursor:pointer;opacity:.55;transition:opacity .16s,color .16s,border-color .16s,background .16s;
+}
+.editor:hover .editor__edit-btn{opacity:1}
+.editor__edit-btn:hover{color:var(--gold);border-color:var(--gold);background:var(--surface2)}
+.editor__edit-btn svg{width:11px;height:11px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+.editor__edit-wrap{display:none;flex-direction:column}
+.editor[data-mode="edit"] .editor__edit-wrap{display:flex}
+.editor[data-mode="edit"] .editor__view{display:none}
+
+.editor__bar{display:flex;flex-wrap:wrap;align-items:center;gap:2px;padding:5px 6px;border-bottom:1px solid var(--border);background:var(--surface)}
+.editor__btn{width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border:none;background:transparent;color:var(--text-dim);border-radius:7px;cursor:pointer;padding:0;font-family:var(--font-body);font-size:13px;font-weight:700;line-height:1;transition:background .14s,color .14s}
+.editor__btn:hover{background:var(--gold-dim);color:var(--gold)}
+.editor__btn.on{background:var(--gold-dim);color:var(--gold)}
+.editor__btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.editor__sep{width:1px;height:18px;background:var(--border);margin:0 3px;flex-shrink:0}
+.editor__area{
+  min-height:92px;max-height:44vh;overflow-y:auto;
+  padding:12px 14px;
+  font-family:var(--font-body);font-size:14.5px;line-height:1.6;
+  color:var(--text);outline:none;overflow-wrap:break-word;
+}
+.editor__area:empty::before{content:attr(data-ph);color:var(--text-dim);opacity:.7;pointer-events:none}
+.editor__actions{display:flex;justify-content:flex-end;gap:8px;padding:7px 8px;border-top:1px solid var(--border);background:var(--surface)}
+.editor__done{
+  font-family:var(--font-mono);font-size:11.5px;font-weight:500;
+  background:var(--sage);color:#fff;border:none;border-radius:7px;
+  padding:6px 14px;cursor:pointer;transition:opacity .16s,transform .1s;
+}
+.editor__done:hover{opacity:.88}
+.editor__done:active{transform:translateY(1px)}
+
+.editor__preview h1,.editor__preview h2,.editor__preview h3,.editor__preview h4,
+.editor__area h1,.editor__area h2,.editor__area h3,.editor__area h4{
+  font-family:var(--font-display);font-weight:600;line-height:1.3;margin:.45em 0 .2em;
+}
+.editor__preview h1,.editor__area h1{font-size:1.45em}
+.editor__preview h2,.editor__area h2{font-size:1.28em}
+.editor__preview h3,.editor__area h3{font-size:1.12em}
+.editor__preview ul,.editor__preview ol,
+.editor__area ul,.editor__area ol{margin:.35em 0;padding-left:1.5em}
+.editor__preview ul,.editor__area ul{list-style:disc}
+.editor__preview ol,.editor__area ol{list-style:decimal}
+.editor__preview li,.editor__area li{margin:.15em 0}
+.editor__preview blockquote,.editor__area blockquote{margin:.4em 0;padding-left:12px;border-left:3px solid var(--border-strong);color:var(--text-dim)}
+.editor__preview a,.editor__area a{color:var(--navy);text-decoration:underline}
+.editor__preview hr,.editor__area hr{border:none;border-top:1px solid var(--border-strong);margin:.6em 0}
+
+.sub__note .editor__preview{min-height:36px;font-size:13.5px}
+.sub__note .editor__area{min-height:64px;font-size:13.5px}
+
+.emoji-panel{position:fixed;z-index:200;max-height:200px;overflow-y:auto;background:var(--surface);border:1px solid var(--border-strong);border-radius:12px;box-shadow:var(--shadow-lg);padding:7px;display:grid;grid-template-columns:repeat(8,1fr);gap:2px}
+.emoji-panel button{border:none;background:transparent;font-size:17px;line-height:1;padding:5px 0;border-radius:7px;cursor:pointer;font-family:'Apple Color Emoji','Segoe UI Emoji','Noto Color Emoji',sans-serif}
+.emoji-panel button:hover{background:var(--gold-dim)}
+
+.note-bar{display:flex;align-items:center;gap:12px;margin-top:8px}
+.note-saved{font-family:var(--font-mono);font-size:11px;color:var(--sage);opacity:0;transition:opacity .3s}
+.note-saved.show{opacity:1}
+.note-clear{margin-left:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-dim);background:transparent;border:1px solid var(--border);border-radius:7px;padding:5px 10px;cursor:pointer;transition:all .16s}
+.note-clear:hover{color:#b23b3b;border-color:#b23b3b}
+.foot__meta{line-height:1.7}
+.foot__actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:16px}
+
+.nomatch{display:none;text-align:center;padding:70px 20px;color:var(--text-dim)}
+.nomatch.show{display:block}
+.nomatch svg{width:38px;height:38px;stroke:var(--border-strong);fill:none;stroke-width:1.6;margin-bottom:14px}
+
+.foot{margin:70px 0 46px;padding-top:24px;padding-bottom:calc(24px + env(safe-area-inset-bottom));border-top:1px solid var(--border);font-size:12.5px;color:var(--text-dim);text-align:center;line-height:1.7}
+
+.toast{
+  position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);
+  background:var(--surface);color:var(--text);border:1px solid var(--border-strong);
+  border-radius:12px;padding:12px 18px;font-size:13.5px;box-shadow:var(--shadow-lg);
+  opacity:0;pointer-events:none;transition:opacity .25s, transform .25s;z-index:300;
+  max-width:calc(100vw - 40px);text-align:center;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+@media (max-width:940px){
+  .layout{grid-template-columns:1fr;gap:26px}
+  .sidebar{position:static;max-height:none;display:flex;gap:10px;overflow-x:auto;padding-bottom:6px}
+  .side-title{display:none}
+  .side-link{min-width:210px;flex-shrink:0;margin-bottom:0;background:var(--surface);border-color:var(--border)}
+  .hero{flex-direction:column;align-items:flex-start;gap:16px;padding:34px 0 24px}
+  .staff{height:78px;width:34px}
+  .toolbar__in{flex-wrap:wrap;gap:12px}
+  .search{max-width:none;order:-1;flex-basis:100%}
+  .toolbar__right{margin-left:0;width:100%;justify-content:space-between}
+  .card__subs,.card__note{padding-left:22px}
+  .editor__edit-btn{opacity:.85}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hero">
+    <svg class="staff" viewBox="0 0 44 132" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round">
+      <path d="M27 24 C 12 24 8 46 25 46 C 38 46 37 29 26 28"/>
+      <path d="M27 24 L 27 122"/>
+      <path d="M18 122 L 36 122"/>
+    </svg>
+    <div>
+      <p class="hero__kicker">World MAP</p>
+      <h1 id="appTitle"></h1>
+      <p class="hero__attrib" id="appAttrib"></p>
+      <p class="hero__tagline" id="appTagline"></p>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <div class="toolbar__in">
+      <label class="search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="q" type="search" autocomplete="off">
+      </label>
+      <div class="toolbar__right">
+        <div class="meter">
+          <svg class="ring" viewBox="0 0 36 36">
+            <circle class="ring__bg" cx="18" cy="18" r="15.9155"/>
+            <circle class="ring__fg" id="ringFg" cx="18" cy="18" r="15.9155"/>
+          </svg>
+          <div class="meter__txt">
+            <div class="meter__num" id="meterNum">0 / 0</div>
+            <div class="meter__lbl" id="meterLbl"></div>
+          </div>
+        </div>
+        <button class="iconbtn" id="resetBtn">
+          <svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+          <span id="resetTxt"></span>
+        </button>
+        <button class="iconbtn" id="expandBtn">
+          <svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M8 21H5a2 2 0 0 1-2-2v-3M16 21h3a2 2 0 0 0 2-2v-3"/></svg>
+          <span id="expandTxt"></span>
+        </button>
+        <button class="iconbtn" id="collapseBtn">
+          <svg viewBox="0 0 24 24"><path d="M9 3v4a2 2 0 0 1-2 2H3M15 3v4a2 2 0 0 0 2 2h4M9 21v-4a2 2 0 0 0-2-2H3M15 21v-4a2 2 0 0 1 2-2h4"/></svg>
+          <span id="collapseTxt"></span>
+        </button>
+        <button class="iconbtn" id="themeBtn" aria-label="theme">
+          <svg class="ic-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4 4l1.5 1.5M18.5 18.5L20 20M2 12h2M20 12h2M4 20l1.5-1.5M18.5 5.5L20 4"/></svg>
+          <svg class="ic-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar"><div class="side-title">Parts</div></aside>
+    <main id="main"></main>
+  </div>
+
+  <div class="nomatch" id="nomatch">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+    <div id="nomatchTxt"></div>
+  </div>
+
+  <footer class="foot" id="foot"></footer>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const DATA = [{"id": "p1", "roman": "I", "kind": "chapter", "title": "కొత్త విశ్వాసుల శిక్షణా మాన్యువల్", "subtitle": "కొత్త విశ్వాసుల బైబిల్ అధ్యయనం", "note": "పరిచయం / బైబిల్ పుస్తకాలు", "items": [{"id": "p1-1", "label": "1", "title": "బైబిల్ దేవుని వాక్యం", "subs": ["దేవుని ప్రత్యేక పుస్తకం", "బైబిల్‌ను అధ్యయనం చేయండి", "ప్రపంచంలోనే గొప్ప వాగ్దానం ఇక్కడ ఉంది", "దేవుని వాక్యం యొక్క ఉద్దేశ్యం", "దేవుని వాక్యం జీవాన్ని ఇస్తుంది (అది సృజనాత్మకమైనది)", "దేవుని వాక్యం నీటిలాంటిది (మనల్ని శుద్ధి చేస్తుంది / శుభ్రంగా ఉంచుతుంది)", "దేవుని వాక్యం మన జీవితాలకు వెలుగు", "దేవుని వాక్యం ఆధ్యాత్మిక ఆహారం", "దేవుని వాక్యం విత్తనం", "దేవుని వాక్యం కత్తిలాంటిది", "దేవుని వాక్యం మనం ప్రార్థించడానికి సహాయపడుతుంది", "దేవుని వాక్యం మనలో బలమైనది"]}, {"id": "p1-2", "label": "2", "title": "దేవుడు", "subs": ["దేవుడు ఎలా ఉంటాడు? (సృష్టికర్త, సర్వశక్తిమంతుడు, సర్వజ్ఞుడు, పరిశుద్ధుడు, ఆత్మ, మీరు తెలుసుకోగల వ్యక్తి, ప్రేమగల తండ్రి)", "దేవుడు గుడులలో నివసించడానికి చాలా గొప్పవాడు", "మనం (సృష్టించబడ్డాము / సొంతం చేసుకోబడ్డాము / దేవుని ఆరాధించడానికి పిలవబడ్డాము)", "నిర్ణయం తీసుకోండి (నిబద్ధత)"]}, {"id": "p1-3", "label": "3", "title": "మనిషి మరియు సాతాను", "subs": ["మనిషి – దేవుని ప్రతిరూపం – అధికారం కలిగి ఉండేలా సృష్టించబడ్డాడు", "లూసిఫర్", "ప్రలోభం", "ఫలితం (విగ్రహారాధన, అనైతికత, అన్ని రకాల దుర్మార్గాలు)", "పునరుద్ధరించడానికి దేవుని గొప్ప ప్రణాళిక"]}, {"id": "p1-4", "label": "4", "title": "యేసు", "subs": ["యేసు దేవుని కుమారుడు", "యేసు ఒక ప్రత్యేక ఉద్దేశ్యంతో ప్రపంచానికి వచ్చాడు (రక్షించడం, విమోచనం, సాతాను పనులను నాశనం చేయడం, నిత్యజీవం, కొత్త జననం, సహవాసాన్ని పునరుద్ధరించడం)", "దేవుడు ఎలా ఉంటాడో మనకు చూపించడానికి యేసు వచ్చాడు (ప్రేమ, శక్తి – స్వస్థపరచడం, దయ్యాలను వెళ్లగొట్టడం, అద్భుతాలు, చనిపోయినవారిని లేపడం)", "యేసు తన జీవితంలో మన బాధలను పంచుకున్నాడు", "మన కోసం యేసు సిలువపై మరణించాడు", "మన కోసం యేసు చనిపోయినవారిలో నుండి లేచాడు", "మన కోసం యేసు పరలోక ద్వారం తెరిచాడు"]}, {"id": "p1-5", "label": "5", "title": "సిలువ", "subs": ["దేవుడు అన్ని పాపాలను పరిష్కరిస్తాడు (శక్తి, ప్రేమ, బాధలు, శిక్ష)", "సిలువ ద్వారా దేవునితో కొత్త సంబంధం (ఆమోదయోగ్యమైనది, క్షమాపణ, దేవుని కుటుంబ సభ్యులు)", "సిలువ ద్వారా స్వేచ్ఛ (సాతాను నుండి, గతం/ప్రస్తుత పాపాలు, అనారోగ్యం, ధర్మశాస్త్ర శాపం, తీర్పు, శాశ్వత మరణం నుండి)", "సిలువ వద్ద ప్రేమ మరియు న్యాయం కలుస్తాయి", "సిలువ చరిత్రకు కేంద్రం"]}, {"id": "p1-6", "label": "6", "title": "క్రీస్తు రక్తం", "subs": ["జీవం రక్తంలో ఉంది", "పాపం మన జీవితానికి ఏమి చేస్తుంది (విడిపోవడం, అపరాధ భావం, సాతాను ప్రవేశాన్ని అనుమతించడం, మరణాన్ని కోరుతుంది)", "రక్తం దేవుని కోసం (సహవాసం పునరుద్ధరించబడింది, విమోచనం పొందారు)", "రక్తం మనిషి కోసం (అపరాధ భావాన్ని కడిగివేస్తుంది, పరిశుద్ధపరుస్తుంది, దగ్గరకు తీసుకువస్తుంది, ప్రవేశించడానికి ధైర్యాన్ని ఇస్తుంది, పరిపూర్ణం చేస్తుంది)", "రక్తం దెయ్యం కోసం (దేవుడిని మనిషి పక్షాన ఉంచుతుంది, చట్టపరమైన హక్కులను రద్దు చేస్తుంది)", "క్రీస్తు రక్తం మనకు ఏమి తెచ్చింది (స్వచ్ఛత, నిత్యజీవం, దేవుని దగ్గరకు వెళ్లడం)"]}, {"id": "p1-7", "label": "7", "title": "పునరుత్థానం", "subs": ["దేవుడు మిమ్మల్ని క్రీస్తుతో పాటు లేపాడు (కొత్త జీవితం, కొత్త జననం, కొత్త ప్రారంభం, సాతానుపై విజయం/అధికారం/శక్తి, కుమారుడు మరియు వారసుడు)", "పునరుత్థానం జీవితంలోని ప్రతి అవసరాన్ని తీరుస్తుంది (గతం నుండి విముక్తి, వర్తమానం కోసం శక్తి, భవిష్యత్తు కోసం నిరీక్షణ)"]}, {"id": "p1-8", "label": "8", "title": "పశ్చాత్తాపం", "subs": ["పశ్చాత్తాపం అంటే ఏమి కాదు (కేవలం అపరాధ భావం కలగడం, బాధపడటం, మంచిగా ఉండటానికి ప్రయత్నించడం, మతపరంగా మారడం, కేవలం సత్యాన్ని తెలుసుకోవడం)", "నిజమైన పశ్చాత్తాపం అంటే ఏమిటి (దేవుని పట్ల బాధ, నిజాయితీ, దూరం కావడం, పాపాన్ని ద్వేషించడం, సాధ్యమైనప్పుడు తిరిగి చెల్లించడం)", "పశ్చాత్తాపంలో ఏమి ఉంటాయి (పాపం/ప్రపంచం/స్వీయ/సాతాను నుండి దూరం కావడం; దేవుని వైపు/సరైన జీవితం వైపు మళ్లడం)"]}, {"id": "p1-9", "label": "9", "title": "విశ్వాసం", "subs": ["విశ్వాసం అంటే ఏమిటి", "రెండు రకాల జ్ఞానం (ఇంద్రియ జ్ఞానం, ప్రత్యక్ష జ్ఞానం)", "విశ్వాసం యొక్క ఆధారం (దేవుని స్వభావం, కుమారుని విమోచన కార్యము, దేవుని వాక్యం)", "విశ్వాసం ఎలా పనిచేస్తుంది (దేవుడు విశ్వాసాన్ని ఇస్తాడు, వాక్యం ద్వారా వస్తుంది, విధేయత, సంక్షోభం/పరీక్ష, ఫలితం)"]}, {"id": "p1-10", "label": "10", "title": "కృప", "subs": []}, {"id": "p1-11", "label": "11", "title": "నీటి బాప్తిస్మం", "subs": []}, {"id": "p1-12", "label": "12", "title": "పరిశుద్ధాత్మ", "subs": []}, {"id": "p1-13", "label": "13", "title": "ప్రలోభం", "subs": []}, {"id": "p1-14", "label": "14", "title": "సహవాసం", "subs": []}, {"id": "p1-15", "label": "15", "title": "ఉదారత", "subs": []}, {"id": "p1-16", "label": "16", "title": "రాజ్య జీవితం", "subs": []}, {"id": "p1-17", "label": "17", "title": "ఆరాధన", "subs": []}, {"id": "p1-18", "label": "18", "title": "ప్రార్థన", "subs": []}, {"id": "p1-19", "label": "19", "title": "పరలోకం", "subs": []}, {"id": "p1-20", "label": "20", "title": "యేసు తిరిగి వచ్చినప్పుడు – రెండవ రాకడ", "subs": []}, {"id": "p1-21", "label": "21", "title": "దేవుని పిలుపు", "subs": []}], "tailNote": "(ప్రతి తదుపరి అధ్యాయం అక్షరాలతో కూడిన పాయింట్లు, లేఖన సూచనలు మరియు \"నా నిబద్ధత\" విభాగంతో కూడిన ఇలాంటి బోధనా ఆకృతిని అనుసరిస్తుంది.)"}, {"id": "p2", "roman": "II", "kind": "letter", "title": "టాపిక్ కాంకర్డెన్స్", "subtitle": null, "note": null, "items": [{"id": "p2-A", "label": "A", "title": "బైబిల్ – దేవుని తప్పు లేని, అపరాధ రహిత, ప్రేరేపిత వాక్యం", "subs": ["బైబిల్ తనను తాను దేవుని వాక్యంగా ప్రకటించుకుంటుంది", "బైబిల్‌లో తప్పులు లేవు (తప్పు లేనిది)", "బైబిల్ ఏ విషయంలోనూ తప్పు చేయదు (అపరాధ రహితమైనది)", "బైబిల్‌లోని మాటలు ఎంచుకున్న వ్యక్తుల ద్వారా దేవుని నుండి వచ్చాయి (ప్రేరేపితమైనది)", "నేను బైబిల్ బోధనలను ఎందుకు అధ్యయనం చేసి పాటించాలి?", "బైబిల్ ఏమి బోధిస్తుందో నేను ఎలా నేర్చుకోవాలి?"]}, {"id": "p2-B", "label": "B", "title": "దేవుడు తండ్రి, కుమారుడు మరియు పరిశుద్ధాత్మ", "subs": ["నేను దేవుని గురించి ఎలా నేర్చుకోవాలి?", "దేవుడు మనిషికి తనను తాను ఎలా వెల్లడిస్తాడు?", "దేవుని పేర్లు ఆయన స్వభావాన్ని వెల్లడిస్తాయి", "దేవుని స్వభావం", "దేవుని లక్షణం", "దేవుడు ఏమి చేస్తాడు?", "దేవుని తండ్రిత్వం", "యేసుక్రీస్తు దైవత్వం", "దేవుడు మాత్రమే చేయగల పనిని యేసు చేస్తాడు", "దేవుడు ఎలా ఉన్నాడో యేసు అలాగే ఉన్నాడు", "యేసు – పూర్తిగా మనిషి మరియు పూర్తిగా దైవం", "పరిశుద్ధాత్మ దేవుడిగా", "పరిశుద్ధాత్మ కార్యము"]}, {"id": "p2-C", "label": "C", "title": "ఆత్మ జీవులు", "subs": ["దేవదూతలు – దేవుని దూతలు", "దయ్యాలు – సాతాను దూతలు", "సాతాను – పేర్లు మరియు చరిత్ర", "సాతాను – శక్తి మరియు కార్యము", "దయ్యాలు & దెయ్యాల శాస్త్రం", "దుష్ట మరియు మాయాజాల కార్యకర్తలు"]}, {"id": "p2-D", "label": "D", "title": "పాపం/మనిషి", "subs": ["పాపం యొక్క స్వభావం", "పాపం మరియు ధర్మశాస్త్రం", "పాపం, పరీక్షలు మరియు ప్రలోభాలు", "మనిషి సృష్టి", "విమోచనం పొందని, పడిపోయిన ప్రజల పరిస్థితి", "విమోచనం పొందిన మనిషి మరియు దేవుని రాజ్యం"]}, {"id": "p2-E", "label": "E", "title": "రక్షణ (విమోచన)", "subs": ["యేసు రక్తం (పూర్తి విమోచనకు సరిపోతుంది)", "రక్షణ సాధనాలు", "పిలుపు – ముందరి జ్ఞానం – ముందస్తు నిర్ణయం", "పశ్చాత్తాపం", "రక్షించే విశ్వాసం", "పునరుద్ధరణ (దేవుని నుండి జన్మించడం)", "నీతిమంతునిగా తీర్చడం", "దత్తత", "పరిశుద్ధాత్మలో బాప్తిస్మం", "నిరంతర విశ్వాసం", "పరిశుద్ధీకరణ – పవిత్రత", " మహిమపరచడం"]}, {"id": "p2-F", "label": "F", "title": "సంఘం", "subs": ["సంఘం – పరిచయం", "సంఘం యొక్క లక్ష్యం", "సువార్త – శుభవార్త", "రోమీయులలో వివరించినట్లుగా సువార్త", "ఎఫెసీయులకు, ఫిలిప్పీయులకు & కొలొస్సయులకు వివరించినట్లుగా సువార్త", "తప్పుడు సువార్తలు", "సంఘ పాలన", "సవరణ & క్షమాపణ", "సార్వత్రిక సంఘంలోని బహుమతులు పొందిన వ్యక్తులు", "క్రీస్తు శరీరంలోని ఆధ్యాత్మిక వరాలు", "సంఘ సమావేశాలలో ఆధ్యాత్మిక వరాలు", "ఆధ్యాత్మిక ఎదుగుదల"]}, {"id": "p2-G", "label": "G", "title": "క్రీస్తులో ఎదగడం", "subs": ["ఆత్మ ఫలము", "నీటి బాప్తిస్మం", "ప్రభువు పసహా – సహవాసము – రొట్టె విరుచుట", "ఆరాధన మరియు స్తుతి", "తప్పుడు ఆరాధన", "ప్రార్థన", "ఉపవాసము", "ఇవ్వడం – దశమభాగములు మరియు అర్పణలు", "వివాహం మరియు కుటుంబం"]}, {"id": "p2-H", "label": "H", "title": "మరణం & అంత్య దినాలు", "subs": ["శారీరక మరణం మరియు చనిపోయినవారి స్థితి", "యేసు రెండవ రాకడ (అవతరణ)", "చనిపోయినవారి పునరుత్థానం మరియు చివరి తీర్పు", "పరలోకం మరియు నరకం – చివరి గమ్యాలు"]}, {"id": "p2-I", "label": "I", "title": "ఇతర ముఖ్యమైన అంశాలు", "subs": ["పది ఆజ్ఞలు", "శరీరానికి దైవిక స్వస్థత", "మేరీ – యేసు తల్లి", "యేసు పేరు"]}], "tailNote": null}, {"id": "p3", "roman": "III", "kind": "letter", "title": "నాయకుల శిక్షణా మార్గదర్శి", "subtitle": null, "note": null, "items": [{"id": "p3-A", "label": "A", "title": "నాయకుల ప్రాథమిక శిక్షణ", "subs": ["సంఘ నాయకులకు ఎలా శిక్షణ ఇవ్వాలి", "తొమ్మిది పనులు చేయడానికి నాయకులకు శిక్షణ ఇవ్వడం", "అధికారాన్ని ఉపయోగించడం మరియు దుర్వినియోగం చేయడం", "భక్తి అలవాటును ఏర్పరచుకోవడం", "ప్రార్థన యోధుడిగా ఎలా ఉండాలి"]}, {"id": "p3-B", "label": "B", "title": "విజయవంతమైన క్రైస్తవ నాయకత్వం", "subs": ["విజయవంతమైన క్రైస్తవ జీవితం", "ఆధ్యాత్మిక అధికారానికి తాళాలు"]}, {"id": "p3-C", "label": "C", "title": "నాయకులు వీటి గురించి ఏమి తెలుసుకోవాలి…", "subs": ["లేఖనాల ప్రామాణికత", "ప్రపంచవ్యాప్తంగా సంఘం", "దేవుడు మనిషిని ఎందుకు సృష్టించాడు", "నేటి సంకేతాలు మరియు అద్భుతాలు", "ఐదు నాయకత్వ వరాలు", "సంఘం యొక్క పునరుద్ధరణ", "నిత్య భద్రత సిద్ధాంతం", "దశమభాగము / ఇవ్వడం", "సేవలో మహిళలు", "ప్రభువు యొక్క ఏడు పండుగలు", "పాత నిబంధన మరియు కొత్త నిబంధన మధ్య 500 సంవత్సరాలు"]}, {"id": "p3-D", "label": "D", "title": "నాయకులు ఎలా చేయగలరు…", "subs": ["పరిశుద్ధాత్మలో మరియు పరిశుద్ధాత్మ వరాలలో బాప్తిస్మం పొందడం", "ప్రవచనాన్ని తీర్పు తీర్చడం నేర్చుకోవడం", "వారి విశ్వాసాన్ని పెంచుకోవడం", "విశ్వాస ఒప్పుకోలు శక్తిని ఉపయోగించడం", "అనారోగ్య శరీరాలను స్వస్థపరచడం", "గాయపడిన ఆత్మను స్వస్థపరచడం", "స్వస్థతలో అతివిశ్వాసాన్ని నివారించడం", "స్వస్థతలో మితిమీరిన వాటిని నివారించడం", "దయ్యాలను వెళ్లగొట్టడం", "ఆధ్యాత్మిక ఆయుధాలను ఉపయోగించడం", "డబ్బు కోసం దేవునిపై నమ్మకం ఉంచడం", "దేవుని మార్గదర్శకత్వం పొందడం", "ప్రవచనం / బైబిల్ అధ్యయనాన్ని సిద్ధం చేయడం"]}, {"id": "p3-E", "label": "E", "title": "యేసు వీటి ద్వారా తన సంఘాన్ని ఎలా నిర్మిస్తాడు…", "subs": ["సంఘం యొక్క మూడు భాగాలు", "పార్ట్ 1: సంఘం యొక్క పునాది", "పార్ట్ 2: సంఘం యొక్క నాయకులు", "పార్ట్ 3: సంఘ సభ్యుల పరిచర్యలు", "స్తుతి మరియు ఆరాధన", "బాబిలోనియన్ అడ్డంకిని విచ్ఛిన్నం చేయడం", "ఆత్మలను ఎలా గెలుచుకోవాలో నేర్చుకోవడం", "కొత్త విశ్వాసులకు సూచనలు ఇవ్వడం", "సంఘం ఎదుగుదల కోసం ప్రణాళిక చేయడం", "పంటను సంరక్షించడం"]}, {"id": "p3-F", "label": "F", "title": "బహుమతులు/తీర్పులు", "subs": ["దేవుని ఆమోద ధృవీకరణ పత్రం", "కిరీటాలు/బహుమతులు", "ధర్మవిరుద్ధమైన కార్యకర్తల తీర్పు"]}, {"id": "p3-G", "label": "G", "title": "ఎస్కాటాలజీ (అంత్య దిన శాస్త్రం)", "subs": ["చివరి విషయాలు", "దత్తత"]}], "tailNote": null}];
+const UI = {"appTitle": "The Shepherd's Staff", "attribution": "World MAP · Ralph Mahoney, Editor · 1993/1999 Edition", "tagline": "Study Companion", "search": "Search chapters and topics…", "studied": "Sections studied", "reset": "Reset progress", "subPoints": "sub-points", "noMatch": "No matches found.", "progress": "Progress", "chapterWord": "Chapter", "expandAll": "Expand all", "collapseAll": "Collapse all"};
+const UI2 = {"notes": "Notes", "ph": "No note yet — click Edit to write…", "backup": "Backup notes", "restore": "Restore notes", "clear": "Clear note", "saved": "Saved", "edit": "Edit", "done": "Done", "install": "Install app"};
+const TOTAL = 37;
+const PKEY = 'shepherds-staff-te-progress';
+const TKEY = 'shepherds-staff-te-theme';
+const NKEY = 'shepherds-staff-te-notes';
+
+let done = {};
+try { done = JSON.parse(localStorage.getItem(PKEY) || '{}') || {}; } catch(e){ done = {}; }
+let notes = {};
+try { notes = JSON.parse(localStorage.getItem(NKEY) || '{}') || {}; } catch(e){ notes = {}; }
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+/* ---------- TOAST ---------- */
+const toastEl = document.getElementById('toast');
+let toastTimer = null;
+function showToast(msg, ms){
+  if (!toastEl) return;
+  toastEl.textContent = msg;
+  toastEl.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toastEl.classList.remove('show'), ms || 2600);
+}
+
+/* ---------- RICH-TEXT EDITOR UTILITIES ---------- */
+const NOTE_ICON = '<svg viewBox="0 0 24 24"><path d="M5 4h9l5 5v11a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M14 4v5h5"/><path d="M8 13h7M8 16h5"/></svg>';
+const EDIT_ICON = '<svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>';
+const EMOJIS = ['😀','😃','😄','😁','😆','😅','😂','🙂','😊','😉','😍','😘','😎','🤗','🤩','😇','🥰','😋','🤔','😴','😌','😔','😞','😢','😭','😮','🙏','👍','👎','👏','🙌','💪','✌️','🤝','👋','✋','👉','🔥','✨','⭐','🌟','💡','📖','📝','📌','✅','❌','⚠️','❗','❓','💬','❤️','🧡','💛','💚','💙','💜','🕊️','✝️','⛪','🛡️','⚔️','🔑','🚪','🕯️','💧','🌱','🌿','🌳','🌈','☀️','🌙','⚡','🎉','🎁','🏆','🥇','🐑','🦁','🐟','🍞','🍇','🍷'];
+const ALLOWED_TAGS = {P:1,DIV:1,BR:1,B:1,STRONG:1,I:1,EM:1,U:1,S:1,STRIKE:1,UL:1,OL:1,LI:1,H1:1,H2:1,H3:1,H4:1,BLOCKQUOTE:1,SPAN:1,A:1,CODE:1,PRE:1,HR:1};
+
+function sanitizeNode(node){
+  const out = document.createDocumentFragment();
+  node.childNodes.forEach(child => {
+    if (child.nodeType === 3){ out.appendChild(document.createTextNode(child.nodeValue)); return; }
+    if (child.nodeType !== 1) return;
+    const tag = child.tagName;
+    if (!ALLOWED_TAGS[tag]){ out.appendChild(sanitizeNode(child)); return; }
+    const el = document.createElement(tag.toLowerCase());
+    if (tag === 'A'){
+      const href = child.getAttribute('href') || '';
+      if (/^(https?:|mailto:)/i.test(href)){
+        el.setAttribute('href', href);
+        el.setAttribute('target', '_blank');
+        el.setAttribute('rel', 'noopener noreferrer');
+      }
+    }
+    el.appendChild(sanitizeNode(child));
+    out.appendChild(el);
+  });
+  return out;
+}
+function sanitizeHTML(html){
+  const tmp = document.createElement('div');
+  tmp.innerHTML = String(html || '');
+  const out = document.createElement('div');
+  out.appendChild(sanitizeNode(tmp));
+  return out.innerHTML;
+}
+function noteIsEmpty(html){
+  if (!html) return true;
+  const d = document.createElement('div');
+  d.innerHTML = html;
+  return !d.textContent.replace(/[\u200B\u00A0]/g, ' ').trim();
+}
+function noteToHTML(v){
+  if (!v) return '';
+  if (/<(p|div|br|ul|ol|li|h[1-6]|b|i|u|strong|em|s|strike|blockquote|span|a|code|pre|hr)\b[^>]*>/i.test(v)) return sanitizeHTML(v);
+  return esc(v).replace(/\r\n?|\n/g, '<br>');
+}
+function toolbarHTML(){
+  const b = (cmd, val, title, html) =>
+    '<button type="button" class="editor__btn" data-cmd="' + cmd + '"' +
+    (val ? ' data-val="' + val + '"' : '') + ' title="' + title + '" aria-label="' + title + '">' + html + '</button>';
+  const sep = '<span class="editor__sep"></span>';
+  return b('bold','','Bold','<b>B</b>') +
+         b('italic','','Italic','<i>I</i>') +
+         b('underline','','Underline','<u>U</u>') +
+         b('strikeThrough','','Strikethrough','<s>S</s>') + sep +
+         b('formatBlock','h2','Heading','<span style="font-weight:700">H</span>') +
+         b('formatBlock','h3','Sub-heading','<span style="font-weight:700;font-size:11px">H</span>') +
+         b('formatBlock','blockquote','Quote','&ldquo;') +
+         b('formatBlock','p','Normal text','&#182;') + sep +
+         b('insertUnorderedList','','Bullet list','&#8226;') +
+         b('insertOrderedList','','Numbered list','1.') + sep +
+         b('removeFormat','','Clear formatting','<svg viewBox="0 0 24 24"><path d="M6 18L18 6"/><circle cx="12" cy="12" r="9"/></svg>') +
+         '<button type="button" class="editor__btn" data-emoji="1" title="Emoji" aria-label="Emoji">😊</button>';
+}
+function editorHTML(id){
+  return '<div class="editor" data-id="' + id + '" data-mode="view">' +
+    '<div class="editor__view">' +
+      '<div class="editor__preview" data-ph="' + esc(UI2.ph) + '"></div>' +
+      '<button type="button" class="editor__edit-btn" title="' + esc(UI2.edit) + '" aria-label="' + esc(UI2.edit) + '">' +
+        EDIT_ICON + '<span>' + esc(UI2.edit) + '</span>' +
+      '</button>' +
+    '</div>' +
+    '<div class="editor__edit-wrap">' +
+      '<div class="editor__bar">' + toolbarHTML() + '</div>' +
+      '<div class="editor__area" contenteditable="true" role="textbox" aria-multiline="true" ' +
+        'data-id="' + id + '" data-ph="' + esc(UI2.ph) + '"></div>' +
+      '<div class="editor__actions">' +
+        '<button type="button" class="editor__done">' + esc(UI2.done) + '</button>' +
+      '</div>' +
+    '</div>' +
+  '</div>';
+}
+function saveNote(id, val){
+  const clean = val ? sanitizeHTML(val) : '';
+  if (clean && !noteIsEmpty(clean)) notes[id] = clean; else delete notes[id];
+  try { localStorage.setItem(NKEY, JSON.stringify(notes)); } catch(e){}
+}
+function flashSaved(id){
+  const el = document.querySelector('[data-saved="' + id + '"]');
+  if (!el) return;
+  el.textContent = UI2.saved; el.classList.add('show');
+  clearTimeout(el._t); el._t = setTimeout(() => el.classList.remove('show'), 1500);
+}
+const noteTimers = {};
+function flashSavedThrottled(id){
+  clearTimeout(noteTimers[id]);
+  noteTimers[id] = setTimeout(() => flashSaved(id), 450);
+}
+function subsHTML(it, q){
+  return '<ol>' + it.subs.map((s, i) => {
+    const sid = it.id + 's' + i;
+    const hit = q && s.toLowerCase().includes(q);
+    return '<li class="sub' + (hit ? ' hit' : '') + '">' +
+      '<div class="sub__row">' +
+        '<span class="sub__mark"></span>' +
+        '<span class="sub__txt">' + (q ? hl(s, q) : esc(s)) + '</span>' +
+        '<button class="sub-note-btn" data-id="' + sid + '" title="' + esc(UI2.notes) + '" aria-label="' + esc(UI2.notes) + '">' + NOTE_ICON + '</button>' +
+      '</div>' +
+      '<div class="sub__note">' + editorHTML(sid) +
+      '<div class="note-bar"><span class="note-saved" data-saved="' + sid + '"></span>' +
+      '<button class="note-clear" data-id="' + sid + '">' + esc(UI2.clear) + '</button></div></div>' +
+    '</li>';
+  }).join('') + '</ol>';
+}
+function renderPreview(editor){
+  const id = editor.dataset.id;
+  const preview = editor.querySelector('.editor__preview');
+  if (preview) preview.innerHTML = notes[id] ? sanitizeHTML(notes[id]) : '';
+}
+function hydrateEditor(editor){
+  if (!editor) return;
+  editor.dataset.mode = 'view';
+  renderPreview(editor);
+  const area = editor.querySelector('.editor__area');
+  if (area) area.innerHTML = '';
+  const host = editor.closest('.sub') || editor.closest('.card');
+  if (host) host.classList.toggle('has-note', !noteIsEmpty(notes[editor.dataset.id] || ''));
+}
+function hydrateSubs(card){
+  card.querySelectorAll('.sub').forEach(li => {
+    const editor = li.querySelector('.editor');
+    if (!editor) return;
+    hydrateEditor(editor);
+    li.classList.toggle('has-note', !noteIsEmpty(notes[editor.dataset.id] || ''));
+  });
+}
+function hydrateNotes(card){
+  const editor = card.querySelector('.card__note .editor');
+  if (editor){
+    hydrateEditor(editor);
+    card.classList.toggle('has-note', !noteIsEmpty(notes[editor.dataset.id] || ''));
+  }
+  hydrateSubs(card);
+}
+function clearNote(id, host){
+  delete notes[id];
+  try { localStorage.setItem(NKEY, JSON.stringify(notes)); } catch(e){}
+  if (host) host.classList.remove('has-note');
+}
+function applyNotes(){
+  DATA.forEach(p => p.items.forEach(it => {
+    const card = document.getElementById('card-' + it.id);
+    if (card) hydrateNotes(card);
+  }));
+}
+
+/* ---- static chrome ---- */
+document.getElementById('appTitle').textContent = UI.appTitle;
+document.getElementById('appAttrib').textContent = UI.attribution;
+document.getElementById('appTagline').textContent = UI.tagline;
+document.getElementById('q').placeholder = UI.search;
+document.getElementById('resetTxt').textContent = UI.reset;
+document.getElementById('meterLbl').textContent = UI.studied;
+document.getElementById('nomatchTxt').textContent = UI.noMatch;
+document.getElementById('expandTxt').textContent = UI.expandAll;
+document.getElementById('collapseTxt').textContent = UI.collapseAll;
+const foot = document.getElementById('foot');
+foot.innerHTML =
+  '<div class="foot__meta">' + esc(UI.attribution) + ' · ' + esc(UI.tagline) + '</div>' +
+  '<div class="foot__actions">' +
+    '<button class="iconbtn" id="backupBtn"><svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg><span>' + esc(UI2.backup) + '</span></button>' +
+    '<button class="iconbtn" id="restoreBtn"><svg viewBox="0 0 24 24"><path d="M12 21V9"/><path d="M7 14l5-5 5 5"/><path d="M5 4h14"/></svg><span>' + esc(UI2.restore) + '</span></button>' +
+    '<button class="iconbtn iconbtn--primary" id="installBtn" hidden>' +
+      '<svg viewBox="0 0 24 24"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 20h14"/></svg>' +
+      '<span>' + esc(UI2.install) + '</span>' +
+    '</button>' +
+    '<input type="file" id="restoreFile" accept="application/json,.json" hidden>' +
+  '</div>';
+
+/* ---------- BACKUP / RESTORE ---------- */
+async function backupNotes(){
+  const payload = { app: 'shepherds-staff', version: 1, exported: new Date().toISOString(), notes: notes, progress: done };
+  const json = JSON.stringify(payload, null, 2);
+  if (window.showSaveFilePicker){
+    try{
+      const handle = await window.showSaveFilePicker({
+        suggestedName: 'shepherds-staff-notes.json',
+        types: [{ description: 'JSON file', accept: { 'application/json': ['.json'] } }]
+      });
+      const w = await handle.createWritable();
+      await w.write(json);
+      await w.close();
+      showToast('Backup saved.');
+      return;
+    }catch(err){
+      if (err && err.name === 'AbortError') return;
+    }
+  }
+  const blob = new Blob([json], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'shepherds-staff-notes.json';
+  document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+  showToast('Backup downloaded.');
+}
+function processRestoreFile(file){
+  const r = new FileReader();
+  r.onload = () => {
+    try{
+      const d = JSON.parse(r.result);
+      if (d.notes) notes = Object.assign(notes, d.notes);
+      if (d.progress) done = Object.assign(done, d.progress);
+      try {
+        localStorage.setItem(NKEY, JSON.stringify(notes));
+        localStorage.setItem(PKEY, JSON.stringify(done));
+      } catch(e){}
+      applyNotes(); refresh();
+      showToast('Notes restored successfully.');
+    }catch(err){ showToast('Could not read that file.'); }
+  };
+  r.readAsText(file);
+}
+async function restoreNotes(){
+  if (window.showOpenFilePicker){
+    try{
+      const [handle] = await window.showOpenFilePicker({
+        types: [{ description: 'JSON file', accept: { 'application/json': ['.json'] } }],
+        multiple: false
+      });
+      const file = await handle.getFile();
+      processRestoreFile(file);
+      return;
+    }catch(err){
+      if (err && err.name === 'AbortError') return;
+    }
+  }
+  document.getElementById('restoreFile').click();
+}
+document.getElementById('backupBtn').addEventListener('click', backupNotes);
+document.getElementById('restoreBtn').addEventListener('click', restoreNotes);
+document.getElementById('restoreFile').addEventListener('change', e => {
+  const f = e.target.files && e.target.files[0];
+  if (f) processRestoreFile(f);
+  e.target.value = '';
+});
+
+/* ---- build sidebar + main ---- */
+const sidebar = $('#sidebar');
+const main = $('#main');
+
+DATA.forEach(part => {
+  const a = document.createElement('a');
+  a.className = 'side-link';
+  a.href = '#' + part.id;
+  a.dataset.part = part.id;
+  a.innerHTML =
+    '<div class="side-link__top"><span class="side-link__roman">' + esc(part.roman) + '</span>' +
+    '<span class="side-link__name">' + esc(part.title) + '</span></div>' +
+    '<div class="side-link__bar"><div class="side-link__fill" data-fill="' + part.id + '"></div></div>' +
+    '<div class="side-link__meta"><span data-count="' + part.id + '">0</span> / ' + part.items.length + '</div>';
+  a.addEventListener('click', e => { e.preventDefault();
+    document.getElementById(part.id).scrollIntoView({behavior:'smooth', block:'start'});
+    history.replaceState(null,'','#'+part.id);
+  });
+  sidebar.appendChild(a);
+
+  const sec = document.createElement('section');
+  sec.className = 'part'; sec.id = part.id;
+  let head = '<div class="part__head"><div class="part__roman">' + esc(part.roman) + '</div><div>' +
+             '<h2 class="part__title">' + esc(part.title) + '</h2>';
+  if (part.subtitle) head += '<p class="part__sub">' + esc(part.subtitle) + '</p>';
+  if (part.note) head += '<span class="part__note">' + esc(part.note) + '</span>';
+  head += '</div><button class="part__chev" aria-label="toggle section"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button></div>';
+  sec.innerHTML = head;
+  sec.querySelector('.part__head').addEventListener('click', () => sec.classList.toggle('collapsed'));
+  const body = document.createElement('div');
+  body.className = 'part__body';
+
+  part.items.forEach((it, i) => {
+    const card = document.createElement('article');
+    card.className = 'card'; card.id = 'card-' + it.id; card.style.setProperty('--i', i);
+    if (done[it.id]) card.classList.add('done');
+    const hasSubs = it.subs.length > 0;
+    card.innerHTML =
+      '<div class="card__head">' +
+        '<button class="check" data-id="' + it.id + '" aria-label="mark studied"><svg viewBox="0 0 24 24"><path d="M4 12.5l5 5L20 6.5"/></svg></button>' +
+        '<span class="badge">' + esc(it.label) + '</span>' +
+        '<h3 class="card__title">' + esc(it.title) + '</h3>' +
+        (hasSubs ? '<span class="count">' + it.subs.length + '</span>' : '') +
+        '<button class="note-btn" data-id="' + it.id + '" title="' + esc(UI2.notes) + '" aria-label="' + esc(UI2.notes) + '">' + NOTE_ICON + '</button>' +
+        (hasSubs ? '<span class="chev"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></span>' : '') +
+      '</div>' +
+      (hasSubs ? '<div class="card__subs">' + subsHTML(it, '') + '</div>' : '') +
+      '<div class="card__note">' + editorHTML(it.id) +
+        '<div class="note-bar"><span class="note-saved" data-saved="' + it.id + '"></span>' +
+        '<button class="note-clear" data-id="' + it.id + '">' + esc(UI2.clear) + '</button></div>' +
+      '</div>';
+
+    const head_ = card.querySelector('.card__head');
+    const check = card.querySelector('.check');
+    check.addEventListener('click', e => { e.stopPropagation(); toggleDone(it.id, card); });
+    if (hasSubs) head_.addEventListener('click', () => card.classList.toggle('open'));
+    hydrateNotes(card);
+    body.appendChild(card);
+  });
+
+  if (part.tailNote) {
+    const n = document.createElement('p'); n.className = 'tailnote'; n.textContent = part.tailNote;
+    body.appendChild(n);
+  }
+  sec.appendChild(body);
+  main.appendChild(sec);
+});
+
+/* ---- progress ---- */
+function toggleDone(id, card){
+  if (done[id]) { delete done[id]; card.classList.remove('done'); }
+  else { done[id] = 1; card.classList.add('done'); }
+  try { localStorage.setItem(PKEY, JSON.stringify(done)); } catch(e){}
+  refresh();
+}
+function refresh(){
+  let n = 0;
+  DATA.forEach(part => {
+    let c = 0;
+    part.items.forEach(it => {
+      const card = document.getElementById('card-' + it.id);
+      if (!card) return;
+      if (done[it.id]) { c++; card.classList.add('done'); } else { card.classList.remove('done'); }
+    });
+    n += c;
+    const pct = part.items.length ? (c / part.items.length * 100) : 0;
+    const fill = document.querySelector('[data-fill="' + part.id + '"]');
+    const cnt = document.querySelector('[data-count="' + part.id + '"]');
+    if (fill) fill.style.width = pct + '%';
+    if (cnt) cnt.textContent = c;
+  });
+  const pct = TOTAL ? Math.round(n / TOTAL * 100) : 0;
+  const ring = document.getElementById('ringFg');
+  if (ring) ring.style.strokeDashoffset = 100 - pct;
+  document.getElementById('meterNum').textContent = n + ' / ' + TOTAL;
+}
+
+/* ---- search ---- */
+const qEl = $('#q');
+const noMatch = $('#nomatch');
+function hl(text, q){
+  const i = text.toLowerCase().indexOf(q);
+  if (i < 0) return esc(text);
+  return esc(text.slice(0,i)) + '<mark>' + esc(text.slice(i, i+q.length)) + '</mark>' + esc(text.slice(i+q.length));
+}
+function filter(){
+  const q = qEl.value.trim().toLowerCase();
+  let visible = 0;
+  DATA.forEach(part => {
+    let pv = 0;
+    part.items.forEach(it => {
+      const card = document.getElementById('card-' + it.id);
+      if (!card) return;
+      const subsBox = card.querySelector('.card__subs');
+      const titleMatch = !q || it.title.toLowerCase().includes(q);
+      const hits = q ? it.subs.filter(s => s.toLowerCase().includes(q)) : [];
+      const show = !q || titleMatch || hits.length > 0;
+      card.classList.toggle('hide', !show);
+      if (show) pv++;
+      if (subsBox){
+        subsBox.innerHTML = subsHTML(it, q);
+        hydrateSubs(card);
+        if (q && hits.length && !titleMatch) card.classList.add('open');
+      }
+      const t = card.querySelector('.card__title');
+      if (t) t.innerHTML = q && titleMatch ? hl(it.title, q) : esc(it.title);
+    });
+    document.getElementById(part.id).classList.toggle('hide', q && pv === 0);
+    if (q && pv > 0) document.getElementById(part.id).classList.remove('collapsed');
+    visible += pv;
+  });
+  noMatch.classList.toggle('show', !!q && visible === 0);
+}
+qEl.addEventListener('input', filter);
+
+/* ---- editor mode switching ---- */
+function setMode(editor, mode){
+  if (!editor) return;
+  const id = editor.dataset.id;
+  if (mode === 'edit'){
+    closeEmoji();
+    const area = editor.querySelector('.editor__area');
+    if (!area) return;
+    area.innerHTML = noteToHTML(notes[id] || '');
+    editor.dataset.mode = 'edit';
+    setTimeout(() => {
+      area.focus();
+      placeCaretEnd(area);
+      updateToolbar(editor);
+    }, 0);
+  } else {
+    closeEmoji();
+    const area = editor.querySelector('.editor__area');
+    if (area){
+      if (area.innerHTML === '<br>' || area.innerHTML === '<div><br></div>') area.innerHTML = '';
+      const clean = sanitizeHTML(area.innerHTML);
+      if (clean && !noteIsEmpty(clean)) notes[id] = clean; else delete notes[id];
+      try { localStorage.setItem(NKEY, JSON.stringify(notes)); } catch(e){}
+      area.innerHTML = '';
+    }
+    renderPreview(editor);
+    editor.dataset.mode = 'view';
+    const host = editor.closest('.sub') || editor.closest('.card');
+    if (host) host.classList.toggle('has-note', !noteIsEmpty(notes[id] || ''));
+    if (notes[id]) flashSaved(id);
+  }
+}
+
+/* ---- editor behaviour ---- */
+let lastArea = null, emojiPanel = null, emojiTarget = null;
+
+function placeCaretEnd(el){
+  try{
+    const r = document.createRange(); r.selectNodeContents(el); r.collapse(false);
+    const s = document.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }catch(e){}
+}
+function updateToolbar(editor){
+  if (!editor) return;
+  editor.querySelectorAll('.editor__btn[data-cmd]').forEach(btn => {
+    const cmd = btn.dataset.cmd;
+    if (cmd === 'formatBlock') return;
+    let on = false;
+    try { on = document.queryCommandState(cmd); } catch(e){}
+    btn.classList.toggle('on', !!on);
+  });
+}
+function editorChanged(area){
+  const id = area.dataset.id;
+  if (area.innerHTML === '<br>' || area.innerHTML === '<div><br></div>') area.innerHTML = '';
+  const host = area.closest('.sub') || area.closest('.card');
+  const has = !noteIsEmpty(area.innerHTML);
+  if (host) host.classList.toggle('has-note', has);
+  saveNote(id, has ? area.innerHTML : '');
+  flashSavedThrottled(id);
+}
+function closeEmoji(){
+  if (emojiPanel){ emojiPanel.remove(); emojiPanel = null; emojiTarget = null; }
+}
+function toggleEmoji(btn, area){
+  if (emojiPanel){ closeEmoji(); return; }
+  emojiTarget = area;
+  emojiPanel = document.createElement('div');
+  emojiPanel.className = 'emoji-panel';
+  emojiPanel.innerHTML = EMOJIS.map(e => '<button type="button">' + e + '</button>').join('');
+  document.body.appendChild(emojiPanel);
+  const w = 244;
+  emojiPanel.style.width = w + 'px';
+  const r = btn.getBoundingClientRect();
+  let left = Math.max(8, Math.min(r.left, window.innerWidth - w - 12));
+  let top = r.bottom + 6;
+  const h = emojiPanel.offsetHeight;
+  if (top + h > window.innerHeight - 8) top = Math.max(8, r.top - h - 6);
+  emojiPanel.style.left = left + 'px';
+  emojiPanel.style.top = top + 'px';
+}
+
+document.addEventListener('mousedown', e => {
+  if (e.target.closest && e.target.closest('.editor__bar, .emoji-panel')) e.preventDefault();
+});
+document.addEventListener('click', e => {
+  const btn = e.target.closest && e.target.closest('.editor__btn');
+  if (btn){
+    const editor = btn.closest('.editor');
+    const area = editor && editor.querySelector('.editor__area');
+    if (!area || editor.dataset.mode !== 'edit') return;
+    area.focus();
+    if (btn.dataset.emoji){ toggleEmoji(btn, area); return; }
+    let cmd = btn.dataset.cmd, val = btn.dataset.val || null;
+    if (cmd === 'formatBlock'){
+      let cur = '';
+      try { cur = (document.queryCommandValue('formatBlock') || '').toLowerCase(); } catch(err){}
+      if (cur === val) val = 'p';
+    }
+    try { document.execCommand(cmd, false, val); } catch(err){}
+    if (cmd === 'removeFormat'){ try { document.execCommand('formatBlock', false, 'p'); } catch(err){} }
+    updateToolbar(editor);
+    editorChanged(area);
+    return;
+  }
+  const em = e.target.closest && e.target.closest('.emoji-panel button');
+  if (em){
+    const area = emojiTarget;
+    if (area){
+      area.focus();
+      try { document.execCommand('insertText', false, em.textContent); } catch(err){}
+      editorChanged(area);
+    }
+    closeEmoji();
+    return;
+  }
+  if (!(e.target.closest && e.target.closest('.emoji-panel'))) closeEmoji();
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape'){ closeEmoji(); }
+});
+document.addEventListener('selectionchange', () => {
+  const sel = document.getSelection();
+  if (!sel || !sel.anchorNode) return;
+  const node = sel.anchorNode;
+  const el = node.nodeType === 1 ? node : node.parentElement;
+  const area = el && el.closest ? el.closest('.editor__area') : null;
+  if (area === lastArea) return;
+  if (lastArea){ const ed = lastArea.closest('.editor'); if (ed) ed.classList.remove('focused'); }
+  lastArea = area;
+  if (area){ const ed = area.closest('.editor'); if (ed) ed.classList.add('focused'); updateToolbar(ed); }
+});
+window.addEventListener('resize', closeEmoji);
+window.addEventListener('scroll', closeEmoji, true);
+
+/* ---- note events ---- */
+main.addEventListener('paste', e => {
+  const area = e.target.closest && e.target.closest('.editor__area');
+  if (!area) return;
+  e.preventDefault();
+  const cd = e.clipboardData;
+  const html = cd.getData('text/html');
+  const text = cd.getData('text/plain');
+  let insert = html ? sanitizeHTML(html) : esc(text).replace(/\r\n?|\n/g, '<br>');
+  insert = insert.replace(/<br\s*\/?>\s*$/i, '');
+  if (insert){ try { document.execCommand('insertHTML', false, insert); } catch(err){} }
+  editorChanged(area);
+});
+main.addEventListener('click', e => {
+  const nb = e.target.closest('.note-btn, .sub-note-btn');
+  if (nb){
+    const host = nb.closest('.sub') || nb.closest('.card');
+    if (!host) return;
+    host.classList.toggle('note-open');
+    const editor = host.querySelector('.editor');
+    if (host.classList.contains('note-open') && editor){
+      hydrateEditor(editor);
+    }
+    e.stopPropagation();
+    return;
+  }
+  const editBtn = e.target.closest('.editor__edit-btn');
+  if (editBtn){
+    setMode(editBtn.closest('.editor'), 'edit');
+    e.stopPropagation();
+    return;
+  }
+  const doneBtn = e.target.closest('.editor__done');
+  if (doneBtn){
+    setMode(doneBtn.closest('.editor'), 'view');
+    e.stopPropagation();
+    return;
+  }
+  const clr = e.target.closest('.note-clear');
+  if (clr){
+    const host = clr.closest('.sub') || clr.closest('.card');
+    const editor = host && host.querySelector('.editor');
+    if (editor){
+      if (editor.dataset.mode === 'edit'){
+        const area = editor.querySelector('.editor__area');
+        if (area) area.innerHTML = '';
+      }
+      renderPreview(editor);
+    }
+    clearNote(clr.dataset.id, host);
+    e.stopPropagation();
+  }
+});
+main.addEventListener('input', e => {
+  const area = e.target.closest && e.target.closest('.editor__area');
+  if (!area) return;
+  editorChanged(area);
+});
+main.addEventListener('blur', e => {
+  const area = e.target && e.target.closest ? e.target.closest('.editor__area') : null;
+  if (!area) return;
+  if (!area.textContent.trim()) area.innerHTML = '';
+  saveNote(area.dataset.id, area.innerHTML);
+}, true);
+main.addEventListener('focusout', e => {
+  const editor = e.target.closest && e.target.closest('.editor');
+  if (!editor) return;
+  setTimeout(() => {
+    if (editor.dataset.mode === 'edit' && !editor.contains(document.activeElement)){
+      setMode(editor, 'view');
+    }
+  }, 0);
+});
+
+/* ---- reset ---- */
+$('#resetBtn').addEventListener('click', () => {
+  if (!Object.keys(done).length) return;
+  if (!confirm(UI.reset + '?')) return;
+  done = {};
+  try { localStorage.removeItem(PKEY); } catch(e){}
+  refresh();
+});
+$('#expandBtn').addEventListener('click', () => {
+  document.querySelectorAll('.part').forEach(p => p.classList.remove('collapsed'));
+  document.querySelectorAll('.card').forEach(c => { if (c.querySelector('.card__subs')) c.classList.add('open'); });
+});
+$('#collapseBtn').addEventListener('click', () => {
+  document.querySelectorAll('.part').forEach(p => p.classList.add('collapsed'));
+  document.querySelectorAll('.card').forEach(c => c.classList.remove('open'));
+});
+
+/* ---- theme ---- */
+function applyTheme(t){
+  document.documentElement.setAttribute('data-theme', t);
+  try { localStorage.setItem(TKEY, t); } catch(e){}
+  const meta = document.querySelector('meta[name="theme-color"]:not([media])');
+  const light = document.querySelector('meta[name="theme-color"][media*="light"]');
+  const dark = document.querySelector('meta[name="theme-color"][media*="dark"]');
+  if (light) light.removeAttribute('media');
+  if (dark) dark.removeAttribute('media');
+  // Simplify: keep media-specific versions; nothing else to do
+}
+const savedT = (()=>{ try { return localStorage.getItem(TKEY); } catch(e){ return null; } })();
+applyTheme(savedT || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));
+$('#themeBtn').addEventListener('click', () => {
+  applyTheme(document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+});
+const sun = document.querySelector('.ic-sun'), moon = document.querySelector('.ic-moon');
+function syncThemeIcons(){
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark';
+  sun.style.display = dark ? 'none' : 'block';
+  moon.style.display = dark ? 'block' : 'none';
+}
+syncThemeIcons();
+$('#themeBtn').addEventListener('click', syncThemeIcons);
+
+/* ---- scroll spy ---- */
+const links = [...sidebar.querySelectorAll('.side-link')];
+const obs = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting){
+    links.forEach(l => l.classList.toggle('active', l.dataset.part === e.target.id));
+  }});
+}, {rootMargin:'-15% 0px -70% 0px'});
+DATA.forEach(p => obs.observe(document.getElementById(p.id)));
+
+refresh();
+
+/* ================================================================
+   PWA SETUP — manifest, icon, install prompt
+   ================================================================ */
+const APP_ICON_SVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0.3" y2="1">
+<stop offset="0" stop-color="#2d4a75"/>
+<stop offset="1" stop-color="#14213a"/>
+</linearGradient>
+<linearGradient id="gld" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0" stop-color="#f3d995"/>
+<stop offset="1" stop-color="#a9781f"/>
+</linearGradient>
+<radialGradient id="glow" cx="0.5" cy="0.3" r="0.8">
+<stop offset="0" stop-color="#ffffff" stop-opacity="0.14"/>
+<stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+</radialGradient>
+</defs>
+<rect width="512" height="512" rx="112" fill="url(#bg)"/>
+<rect width="512" height="512" rx="112" fill="url(#glow)"/>
+<circle cx="256" cy="256" r="196" fill="none" stroke="url(#gld)" stroke-width="3" opacity="0.28"/>
+<circle cx="256" cy="256" r="168" fill="none" stroke="url(#gld)" stroke-width="1.5" opacity="0.18"/>
+<g fill="none" stroke="url(#gld)" stroke-width="30" stroke-linecap="round" stroke-linejoin="round">
+<path d="M325 178 C 190 178 155 320 295 320 C 400 320 385 195 305 190"/>
+<path d="M325 178 L 325 410"/>
+<path d="M268 410 L 382 410"/>
+</g>
+</svg>`;
+
+function loadImage(src){
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = (e) => reject(e);
+    img.src = src;
+  });
+}
+function svgToPNG(img, size){
+  const c = document.createElement('canvas');
+  c.width = c.height = size;
+  const ctx = c.getContext('2d');
+  ctx.clearRect(0, 0, size, size);
+  ctx.drawImage(img, 0, 0, size, size);
+  return c.toDataURL('image/png');
+}
+
+(async function setupPWA(){
+  let icon192, icon512, icon180, icon32;
+  const svgDataURI = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(APP_ICON_SVG);
+  try {
+    const img = await loadImage(svgDataURI);
+    icon192 = svgToPNG(img, 192);
+    icon512 = svgToPNG(img, 512);
+    icon180 = svgToPNG(img, 180);
+    icon32  = svgToPNG(img, 32);
+  } catch(e){
+    console.warn('Icon rasterization failed; falling back to SVG.', e);
+    icon192 = icon512 = icon180 = icon32 = svgDataURI;
+  }
+
+  // Favicon
+  let fav = document.querySelector('link[rel="icon"]');
+  if (!fav){ fav = document.createElement('link'); fav.rel = 'icon'; document.head.appendChild(fav); }
+  fav.type = icon32.startsWith('data:image/png') ? 'image/png' : 'image/svg+xml';
+  fav.href = icon32;
+
+  // Apple touch icon
+  let ati = document.querySelector('link[rel="apple-touch-icon"]');
+  if (!ati){ ati = document.createElement('link'); ati.rel = 'apple-touch-icon'; document.head.appendChild(ati); }
+  ati.href = icon180;
+
+  // Web app manifest
+  let startUrl, scope;
+  try {
+    const u = new URL(location.href);
+    startUrl = u.href.split('#')[0];
+    scope = u.origin + u.pathname.replace(/[^/]*$/, '');
+  } catch(e){
+    startUrl = location.href;
+    scope = './';
+  }
+  const manifest = {
+    id: startUrl,
+    name: "The Shepherd's Staff — Study Companion",
+    short_name: "Shepherd's Staff",
+    description: "A study companion for The Shepherd's Staff with notes, progress tracking, and topic concordance.",
+    start_url: startUrl,
+    scope: scope,
+    display: 'standalone',
+    display_override: ['standalone', 'minimal-ui', 'browser'],
+    orientation: 'any',
+    background_color: '#f6f2ea',
+    theme_color: '#1f3a5f',
+    lang: 'te',
+    dir: 'ltr',
+    categories: ['education', 'books', 'productivity'],
+    icons: [
+      { src: icon192, sizes: '192x192', type: 'image/png', purpose: 'any' },
+      { src: icon512, sizes: '512x512', type: 'image/png', purpose: 'any' },
+      { src: icon512, sizes: '512x512', type: 'image/png', purpose: 'maskable' }
+    ]
+  };
+  try {
+    const mBlob = new Blob([JSON.stringify(manifest)], { type: 'application/manifest+json' });
+    const mUrl = URL.createObjectURL(mBlob);
+    let link = document.querySelector('link[rel="manifest"]');
+    if (!link){ link = document.createElement('link'); link.rel = 'manifest'; document.head.appendChild(link); }
+    link.href = mUrl;
+  } catch(e){ console.warn('Manifest setup failed.', e); }
+})();
+
+/* ---- Install prompt ---- */
+const installBtn = document.getElementById('installBtn');
+let deferredPrompt = null;
+
+function isStandalone(){
+  return (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches)
+      || (window.navigator && window.navigator.standalone === true);
+}
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+const isAndroid = /Android/i.test(navigator.userAgent);
+
+window.addEventListener('beforeinstallprompt', e => {
+  e.preventDefault();
+  deferredPrompt = e;
+  if (installBtn && !isStandalone()) installBtn.hidden = false;
+});
+
+window.addEventListener('appinstalled', () => {
+  deferredPrompt = null;
+  if (installBtn) installBtn.hidden = true;
+  showToast('App installed. Look for it on your home screen.');
+});
+
+if (installBtn){
+  // Show install button on iOS Safari (uses manual A2HS), and if installable already
+  if (!isStandalone() && (isIOS || isAndroid)) installBtn.hidden = false;
+
+  installBtn.addEventListener('click', async () => {
+    if (deferredPrompt){
+      try {
+        deferredPrompt.prompt();
+        const choice = await deferredPrompt.userChoice;
+        if (choice && choice.outcome === 'accepted'){
+          showToast('Installing app…');
+        }
+      } catch(e){}
+      deferredPrompt = null;
+      installBtn.hidden = true;
+      return;
+    }
+    if (isIOS){
+      showToast('Tap Share  →  “Add to Home Screen” to install.', 5200);
+      return;
+    }
+    if (isAndroid){
+      showToast('Open the browser menu (⋮) and tap “Install app” or “Add to Home screen”.', 5200);
+      return;
+    }
+    showToast('Use your browser menu to add this page to your home screen.', 4800);
+  });
+}
+</script>
+</body>
+</html>
